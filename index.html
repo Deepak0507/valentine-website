@@ -19,8 +19,8 @@
         
         <div class="content">
             <div class="puppy-container">
-                <img src="doll.jpg" alt = "Mysterious Doll girl standing by the beach" 
-                      class="puppy-image">
+                <img src="https://images.unsplash.com/photo-1629043923531-c8c736e4ef06?w=400&h=400&fit=crop" 
+                     alt="Cute puppy" class="puppy-image">
                 <div class="please-text">PLEASE...</div>
             </div>
 
@@ -43,6 +43,36 @@
         </div>
     </div>
 
+    <!-- Email Input Popup -->
+    <div class="popup-overlay" id="emailPopup">
+        <div class="popup-content">
+            <div class="popup-hearts">💕 💗 💖</div>
+            <h2 class="popup-title">Yay! One Last Thing... 💌</h2>
+            <p class="popup-message">Enter your email so I can send you something special!</p>
+            
+            <form id="emailForm" class="email-form">
+                <div class="input-group">
+                    <input 
+                        type="email" 
+                        id="emailInput" 
+                        class="email-input" 
+                        placeholder="your.email@example.com"
+                        required
+                    >
+                    <label class="email-label">Your Email Address</label>
+                </div>
+                
+                <button type="submit" class="btn btn-submit">
+                    Send Me Love! 💖
+                </button>
+            </form>
+            
+            <div class="popup-footer">
+                <small>Don't worry, your email is safe with me! 🔒</small>
+            </div>
+        </div>
+    </div>
+
     <!-- Success Screen -->
     <div class="screen" id="successScreen">
         <div class="hearts-explosion" id="heartsExplosion"></div>
@@ -53,7 +83,7 @@
             <p class="success-message">
                 Check your email for a special surprise!
             </p>
-            <div class="email-hint">devunamithadevi@gmail.com</div>
+            <div class="email-hint" id="emailHint"></div>
             <div class="sparkles">✨ ✨ ✨</div>
         </div>
     </div>

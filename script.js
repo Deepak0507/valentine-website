@@ -1,6 +1,5 @@
-// Configuration - EDIT THIS SECTION
+// Configuration - You can still edit the default message here
 const EMAIL_CONFIG = {
-    recipientEmail: 'deepdeepak613@gmail.com',
     subject: 'Someone Said YES to Being Your Valentine! 💕',
     message: `
 🌹 You have a Valentine! 🌹
@@ -10,12 +9,33 @@ Someone special just said YES to being your Valentine!
 They couldn't resist saying yes to you. 
 Get ready for a Valentine's Day filled with love and happiness! 💖
 
+✨ Our Special Valentine’s Plan ✨
+
+We’ll begin our beautiful day with blessings at the temple:
+🙏 Temple Visit:
+https://maps.app.goo.gl/xad6xJrb8ioY8Har9
+
+After that, we’ll roam hand in hand through the vibrant streets of Pondy Bazaar,
+soaking in the lights, the laughter, the little shops, and stealing cute moments together. 🛍️✨
+
+And to end our perfect day, we’ll enjoy a romantic meal at:
+🍽️ Valentine Dinner Spot:
+https://maps.app.goo.gl/ETCHy4vJYNFr4cGo6
+
+A peaceful start, a fun little adventure, and a cozy dinner —
+all with you right beside me. 💕
+
+What more could I possibly ask for? 💖
+
 With all the love in the world,
 Your Biggest Admirer 💕
 
 P.S. - You better check who sent this! 😉
     `.trim()
 };
+
+// Store the user's email
+let userEmail = '';
 
 // Create floating hearts background
 function createFloatingHearts() {
@@ -112,7 +132,7 @@ function createHeartsExplosion() {
 }
 
 // Send email function - FOR NETLIFY
-async function sendEmail() {
+async function sendEmail(recipientEmail) {
     try {
         const response = await fetch('/.netlify/functions/send-email', {
             method: 'POST',
@@ -120,7 +140,7 @@ async function sendEmail() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                recipientEmail: EMAIL_CONFIG.recipientEmail,
+                recipientEmail: recipientEmail,
                 subject: EMAIL_CONFIG.subject,
                 message: EMAIL_CONFIG.message
             })
@@ -141,20 +161,69 @@ async function sendEmail() {
     }
 }
 
-// Yes button click handler
-document.getElementById('yesBtn').addEventListener('click', async () => {
+// Show email popup
+function showEmailPopup() {
+    const popup = document.getElementById('emailPopup');
+    popup.classList.add('active');
+    
+    // Focus on email input after animation
+    setTimeout(() => {
+        document.getElementById('emailInput').focus();
+    }, 300);
+}
+
+// Hide email popup
+function hideEmailPopup() {
+    const popup = document.getElementById('emailPopup');
+    popup.classList.remove('active');
+}
+
+// Show success screen
+function showSuccessScreen(email) {
     // Hide question screen
     document.getElementById('questionScreen').classList.remove('active');
     
     // Show success screen
     setTimeout(() => {
         document.getElementById('successScreen').classList.add('active');
+        document.getElementById('emailHint').textContent = email;
         createHeartsExplosion();
     }, 300);
+}
+
+// Yes button click handler - Show popup
+document.getElementById('yesBtn').addEventListener('click', () => {
+    showEmailPopup();
+});
+
+// Email form submit handler
+document.getElementById('emailForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const emailInput = document.getElementById('emailInput');
+    userEmail = emailInput.value.trim();
+    
+    if (!userEmail) {
+        alert('Please enter your email address! 💕');
+        return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(userEmail)) {
+        alert('Please enter a valid email address! 💕');
+        return;
+    }
+    
+    // Hide popup
+    hideEmailPopup();
+    
+    // Show success screen
+    showSuccessScreen(userEmail);
     
     // Send email
     setTimeout(() => {
-        sendEmail();
+        sendEmail(userEmail);
     }, 1000);
 });
 
@@ -175,3 +244,29 @@ window.addEventListener('load', () => {
         }, i * 200);
     }
 });
+
+// Close popup if clicking outside
+document.getElementById('emailPopup').addEventListener('click', (e) => {
+    if (e.target.id === 'emailPopup') {
+        // Don't close - make them enter email or refresh page
+        const emailInput = document.getElementById('emailInput');
+        emailInput.classList.add('shake');
+        setTimeout(() => {
+            emailInput.classList.remove('shake');
+        }, 500);
+    }
+});
+
+// Add shake animation for validation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+    }
+    .shake {
+        animation: shake 0.3s ease-in-out;
+    }
+`;
+document.head.appendChild(style);

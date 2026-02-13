@@ -11,7 +11,7 @@ They couldn't resist saying yes to you.
 Get ready for a Valentine's Day filled with love and happiness! 💖
 
 With all the love in the world,
-Your Secret Admirer 💕
+Your Biggest Admirer 💕
 
 P.S. - You better check who sent this! 😉
     `.trim()

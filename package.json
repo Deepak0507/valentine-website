@@ -1,0 +1,9 @@
+{
+  "name": "valentine-website",
+  "version": "1.0.0",
+  "description": "Valentine's Day interactive website",
+  "main": "index.html",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  }
+}

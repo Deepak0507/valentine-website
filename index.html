@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="hearts-container" id="floatingHearts"></div>
+
+    <!-- Main Question Screen -->
+    <div class="screen active" id="questionScreen">
+        <div class="hearts-border"></div>
+        
+        <div class="content">
+            <div class="puppy-container">
+                <img src="doll.jpg" alt = "Mysterious Doll girl standing by the beach" 
+                      class="puppy-image">
+                <div class="please-text">PLEASE...</div>
+            </div>
+
+            <h1 class="question-text">
+                Fine girl, will you be my
+                <span class="heart-icon">💕</span>
+                <span class="valentine-text">Valentine?</span>
+            </h1>
+
+            <div class="buttons-container">
+                <button class="btn btn-yes" id="yesBtn">
+                    Absolutely 💖
+                </button>
+                <button class="btn btn-no" id="noBtn">
+                    Ummm... 🤔
+                </button>
+            </div>
+
+            <div class="love-text">love</div>
+        </div>
+    </div>
+
+    <!-- Success Screen -->
+    <div class="screen" id="successScreen">
+        <div class="hearts-explosion" id="heartsExplosion"></div>
+        
+        <div class="success-content">
+            <div class="success-icon">💌</div>
+            <h2 class="success-title">Yayyy! 🎉</h2>
+            <p class="success-message">
+                Check your email for a special surprise!
+            </p>
+            <div class="email-hint">devunamithadevi@gmail.com</div>
+            <div class="sparkles">✨ ✨ ✨</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

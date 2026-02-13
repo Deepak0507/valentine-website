@@ -4,9 +4,9 @@ const EMAIL_CONFIG = {
     message: `
 🌹 You have a Valentine! 🌹
 
-Someone special just said YES to being your Valentine!
+Your Man just said YES to being your Valentine!
 
-They couldn't resist saying yes to you. 
+I couldn't resist saying yes to you. 
 Get ready for a Valentine's Day filled with love and happiness! 💖
 
 ✨ Our Special Valentine’s Plan ✨
@@ -28,9 +28,9 @@ all with you right beside me. 💕
 What more could I possibly ask for? 💖
 
 With all the love in the world,
-Your Biggest Admirer 💕
+Your Biggest Admirer💕
 
-P.S. - You better check who sent this! 😉
+I Love You💖
     `.trim()
 };
 
